@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 8000
 
 # Run the app
-CMD ["gunicorn","-k", "uvicorn.workers.UvicornWorker","app:main", "--bind", "0.0.0.0:8000", "--workers=4"]
+CMD ["gunicorn","-k", "uvicorn.workers.UvicornWorker","app:app", "--bind", "0.0.0.0:8000", "--workers=4"]
