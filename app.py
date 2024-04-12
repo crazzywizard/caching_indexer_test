@@ -10,6 +10,7 @@ import os
 load_dotenv()
 
 app = FastAPI(description="Indexer Service")
+app.add_middleware(GZipMiddleware, minimum_size=100000)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,7 +18,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 async def get_redis():
     return aioredis.from_url(
